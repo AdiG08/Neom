@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:neom/google_signIn.dart';
 import 'package:provider/provider.dart';
 
@@ -15,18 +16,22 @@ class SignIn_Screen extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Center(
-            child: TextButton(
+            child: ElevatedButton.icon(
+              icon: const FaIcon(FontAwesomeIcons.google, color: Colors.amber),
+              label: const Text(
+                'Login Using Google',
+                style: TextStyle(fontSize: 20.0),
+              ),
               onPressed: () {
                 final provider =
                     Provider.of<GoogleSignInProvider>(context, listen: false);
                 provider.googleLogin();
               },
-              child: Text('SignIn using Google'),
-              style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Colors.lightBlueAccent,
-                  padding: EdgeInsets.all(10.0),
-                  minimumSize: Size(100, 30)),
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
             ),
           ),
         ],

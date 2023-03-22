@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:neom/info_tile.dart';
 import 'package:provider/provider.dart';
 
 import '../google_signIn.dart';
@@ -11,6 +12,7 @@ class LoggedInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.lightBlueAccent,
         title: Text('Your Profile'),
         centerTitle: true,
         actions: [
@@ -26,18 +28,27 @@ class LoggedInScreen extends StatelessWidget {
       ),
       body: Container(
         alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Profile'),
-            SizedBox(height: 32),
-            CircleAvatar(
-                radius: 40.0, backgroundImage: NetworkImage(user.photoURL!)),
-            SizedBox(height: 8),
-            Text('Name ' + user.displayName!),
-            SizedBox(height: 8),
-            Text('Email ' + user.email!),
-          ],
+        child: SafeArea(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              // Text('Profile'),
+              SizedBox(height: 25),
+              CircleAvatar(
+                  radius: 60.0, backgroundImage: NetworkImage(user.photoURL!)),
+              SizedBox(height: 8),
+              Text(
+                user.displayName!,
+                style: const TextStyle(
+                    fontSize: 35.0,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Alkatra"),
+              ),
+              SizedBox(height: 20),
+              InfoTile(icon: Icons.mail, text: user.email!),
+            ],
+          ),
         ),
       ),
     );
