@@ -14,23 +14,29 @@ class SignIn_Screen extends StatelessWidget {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Center(
-            child: ElevatedButton.icon(
-              icon: const FaIcon(FontAwesomeIcons.google, color: Colors.amber),
-              label: const Text(
-                'Login Using Google',
-                style: TextStyle(fontSize: 20.0),
-              ),
-              onPressed: () {
-                final provider =
-                    Provider.of<GoogleSignInProvider>(context, listen: false);
-                provider.googleLogin();
-              },
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
+            child: CircleAvatar(
+              radius: 60.0,
+              foregroundImage: AssetImage('assets/images/download.png'),
+            ),
+          ),
+          SizedBox(height: 10.0),
+          ElevatedButton.icon(
+            icon: const FaIcon(FontAwesomeIcons.google, color: Colors.amber),
+            label: const Text(
+              'Login Using Google',
+              style: TextStyle(fontSize: 20.0),
+            ),
+            onPressed: () {
+              final provider =
+                  Provider.of<GoogleSignInProvider>(context, listen: false);
+              provider.googleLogin();
+            },
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
               ),
             ),
           ),
