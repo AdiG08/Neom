@@ -32,8 +32,6 @@ class LoggedInScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              // Text('Profile'),
-              SizedBox(height: 25),
               CircleAvatar(
                   radius: 60.0, backgroundImage: NetworkImage(user.photoURL!)),
               SizedBox(height: 8),
